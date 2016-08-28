@@ -1,0 +1,58 @@
+/* Problem statement:From contest in TOPH....
+
+Let’s define a easy sequence F. Where
+
+F(1) = 1
+F(2X) = F(X)^2 + 1
+F(2X+1) = F(X) * F(X+1) + 2
+
+Here X is a positive integer. So, the first few elements of the sequence are 1, 2, 4, 5, 10, 17, 22, 26, 52, 101 and so on.
+
+Now given a value of X, can you compute F(X)?
+
+Input*/
+
+#include <bits/stdc++.h>
+#define in unsigned long long int
+#define M 10000000000
+
+using namespace std;
+map<in,in>p,f;
+ in a,c,n;
+
+in fun(in x)
+{
+          if(x==1)
+                    return 1;
+        if(p[x])
+                    return p[x];
+         if(x & 1)
+         return p[x]=fun((x-1)/2)*fun(((x-1)/2)+1)+2;
+
+         else
+         return p[x]=fun(x/2)*fun(x/2)+1;
+}
+
+int main()
+{
+p[1]=1;
+ f[1]=1;
+
+cin>>n;
+int m=1;
+while(m<=n)
+{          cin>>a;
+
+          cout<<"Case "<<m<<": "<<fun(a);
+
+             if(m!=n)
+             cout<<endl;
+              m++;
+}
+
+
+
+
+
+
+}
